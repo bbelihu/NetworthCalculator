@@ -1,0 +1,169 @@
+﻿@model NetWorthCalculator.Models.NetworthModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<html>
+<head>
+    <style>
+        #span1{
+            margin-left: 450px;
+        }
+        #span2 {
+            margin-left: 425px;
+        }
+
+        #left {
+            margin-left: 250px;
+        }
+
+        #blue span {
+            color: dodgerblue;
+        }
+
+        #gray {
+            background-color: lightgray;
+            
+        }
+        #footer{
+            margin-left: 250px;
+        }
+        #dollar1{
+            margin-left:300px;
+        }
+        #dollar{
+            margin-left:250px;
+        }
+        #hidden{
+            border-top-style:hidden;
+            border-right-style:hidden;
+            border-left-style:hidden;
+            border-bottom-style:hidden;
+        }
+        #total{
+            margin-left:400px;
+        }
+        #total2{
+            margin-left:112px;
+        }
+        .b {
+            border-top: 1px solid dodgerblue;
+        }
+        tr {
+            border-bottom: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body id="b">
+    <form asp-action="Index">
+        <div id="blue">
+            <span>Assets</span>
+            <span id="span1">Current Value</span>
+        </div>
+
+        <table id="table1">
+            <tr>
+                <td id="gray" colspan="2" class="b"><strong>Cash and cash equivalents</strong></td> 
+            </tr>
+            <tr>
+                <td><label>Checkings accounts</label></td>
+                <td> <div><span id="dollar1">$</span><input id="hidden" type="number" asp-for="Checkings_accounts" /></div> </td>
+            </tr>
+            <tr>
+                <td><label>Savings accounts</label></td>
+                <td> <div><span id="dollar1">$</span><input id="hidden"  type="number" asp-for="Savings_accounts" /></div>  </td>
+            </tr>
+            <tr>
+                <td><label>Money market accounts</label></td>
+                <td> <div><span id="dollar1">$</span><input id="hidden" type="number" asp-for="Money_markets_accounts" /></div> </td>
+            </tr>
+            <tr>
+                <td><label>Savings bonds</label></td>
+                <td><div><span id="dollar1">$</span><input id="hidden" type="number" asp-for="Savings_bonds" /></div>  </td>
+            </tr>
+            <tr>
+                <td><label>CD's </label></td>
+                <td><div><span id="dollar1">$</span><input id="hidden"  type="number" asp-for="Cd" /></div>   </td>
+            </tr>
+            <tr>
+                <td><label>Other</label></td>
+                <td><div><span id="dollar1">$</span><input id="hidden" type="number" asp-for="Other" /></div>  </td>
+            </tr>
+        </table>
+        <div id="footer1">
+            <span id="total">Total cash $</span>
+            <input readonly id="hidden" type="number" asp-for="@ViewData["cash"]" />
+        </div>
+
+        <div><br /></div>
+
+        <div id="blue">
+            <span>Liabilities</span>
+            <span id="span2">Current amount due</span>
+        </div>
+
+        <table id="table1">
+            <tr>
+                <td id="gray" colspan="2" class="b"><strong>Current</strong></td>
+            </tr>
+            <tr>
+                <td><label>Credit card balances</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Credit_card_balance" /></div>  </td>
+            </tr>
+            <tr>
+                <td><label>Estimated income tax owed</label></td>
+                <td> <div><span id="dollar">$</span><input id="hidden"  type="number" asp-for="Estimated_income_taxowed" /></div></td>
+            </tr>
+            <tr>
+                <td><label>Other outstanding bills</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Other_outstanding_bills" /></div>  </td>
+            </tr>
+            <tr>
+                <td id="gray" colspan="2"><strong>Long-term</strong></td>
+            </tr>
+            <tr>
+                <td><label>Home mortgage</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Home_mortgage" /></div></td>
+            </tr>
+            <tr>
+                <td><label>Home equity loan </label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Home_equity_loans" /></div>   </td>
+            </tr>
+            <tr>
+                <td><label>Mortgage on rental properties</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Mortgage_on_renatal_properties" /></div> </td>
+            </tr>
+            <tr>
+                <td><label>Car loans</label></td>
+                <td> <div><span id="dollar">$</span><input id="hidden"  type="number" asp-for="Car_loans" /></div> </td>
+            </tr>
+            <tr>
+                <td><label>Student loans</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden"  type="number" asp-for="Student_loans" /></div>  </td>
+            </tr>
+            <tr>
+                <td><label>Life insurance policy loans</label></td>
+                <td><div><span id="dollar">$</span> <input id="hidden"  type="number" asp-for="Life_insurance_policy_loans" /></div> </td>
+            </tr>
+            <tr>
+                <td><label>Other long-term debt</label></td>
+                <td><div><span id="dollar">$</span><input id="hidden" type="number" asp-for="Other_longterm_debts" /></div>  </td>
+            </tr>
+        </table>
+        <div id="footer">
+            <span id="total2">Total liabilities $</span>
+            <input readonly id="hidden" type="number" asp-for="@ViewData["liabilities"]" />
+        </div>
+        <div>
+            <input type="submit" value="calculate" asp-for="calculate" />
+        </div>
+        <div>
+            <label><strong>Net Worth</strong></label>
+            <input readonly id="hidden" type="number" asp-for="@ViewData["net"]" />
+        </div>
+    </form>
+</body>
+</html>
+
+
